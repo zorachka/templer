@@ -20,6 +20,10 @@ final class TwigConfig
         return new self($extensions, $frontendUrl);
     }
 
+    /**
+     * @param class-string $extensionClassName
+     * @return $this
+     */
     public function withExtension(string $extensionClassName): self
     {
         $new = clone $this;
@@ -34,6 +38,14 @@ final class TwigConfig
     public function extensions(): array
     {
         return $this->extensions;
+    }
+
+    public function withFrontendUrl(string $frontendUrl): self
+    {
+        $new = clone $this;
+        $new->frontendUrl = $frontendUrl;
+
+        return $new;
     }
 
     /**

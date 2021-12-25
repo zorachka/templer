@@ -43,13 +43,13 @@ final class TwigServiceProvider implements ServiceProvider
 
                 $cacheDirectory = $directories->get($templer->cacheDirectory());
                 $environment = new Environment($loader, [
-                    'cache' => $templer->debug() ? false : $cacheDirectory,
-                    'debug' => $templer->debug(),
-                    'strict_variables' => $templer->debug(),
-                    'auto_reload' => $templer->debug(),
+                    'cache' => $templer->isDebugEnabled() ? false : $cacheDirectory,
+                    'debug' => $templer->isDebugEnabled(),
+                    'strict_variables' => $templer->isDebugEnabled(),
+                    'auto_reload' => $templer->isDebugEnabled(),
                 ]);
 
-                if ($templer->debug()) {
+                if ($templer->isDebugEnabled()) {
                     $environment->addExtension(new DebugExtension());
                 }
 
